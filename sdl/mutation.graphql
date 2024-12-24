@@ -1,0 +1,9 @@
+input TodoInput {
+  id: Int!
+  title: String!
+  description: String!
+}
+
+type Mutation {
+  updateTodo(todo: TodoInput): TodoType
+}

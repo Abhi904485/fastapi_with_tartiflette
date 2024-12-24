@@ -1,0 +1,13 @@
+enum TodoStatus {
+    IN_PROGRESS
+    DONE
+}
+
+type TodoTimer {
+    remainingTime: Int!
+    status: TodoStatus!
+}
+
+type Subscription {
+    launchAndWaitTodoTimer(id: Int!): TodoTimer
+}

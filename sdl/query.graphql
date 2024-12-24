@@ -1,0 +1,10 @@
+type TodoType {
+    id: Int!
+    title: String!
+    description: String
+}
+
+type Query{
+    todos: [TodoType]
+    todo(id: Int!): TodoType
+}
