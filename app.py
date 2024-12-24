@@ -6,7 +6,8 @@ from tartiflette_asgi import TartifletteApp
 
 app = FastAPI()
 engine = Engine(sdl=os.path.join(os.path.dirname(__file__), 'sdl'),
-                modules=["resolvers.query_resolvers", "resolvers.mutation_resolvers", "resolvers.subscription_resolvers"])
+                modules=["resolvers.query_resolvers", "resolvers.mutation_resolvers",
+                         "resolvers.subscription_resolvers", "directives.rate_limiting", "directives.auth"])
 graphql_app = TartifletteApp(engine=engine, subscriptions=True)
 
 app.mount("/graphql", graphql_app)

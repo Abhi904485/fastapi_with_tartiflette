@@ -1,9 +1,19 @@
+directive @rateLimiting(
+    name: String!
+    maxAttempts: Int! = 5
+    duration: Int! = 60
+) on FIELD_DEFINITION
+
+directive @auth(
+    domain: String!
+) on FIELD_DEFINITION
+
 input TodoInput {
-  id: Int!
-  title: String!
-  description: String!
+    id: Int!
+    title: String!
+    description: String!
 }
 
 type Mutation {
-  updateTodo(todo: TodoInput): TodoType
+    updateTodo(todo: TodoInput): TodoType @auth(domain: "localhost") @rateLimiting(name: "update_todo")
 }
